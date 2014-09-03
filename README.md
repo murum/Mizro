@@ -8,3 +8,5 @@ A game programmed in the park on the lunchrbeak from Reasons to be Creative 2014
 * Design
 * Identity
 * Cleaner code
+
+Designer can send me an email christoffer@rydberg.me
