@@ -6,33 +6,43 @@ return(!i||i!==r&&!b.contains(r,i))&&(e.type=o.origType,n=o.handler.apply(this,a
 
 
 $(function() {
-	// Ugly scripting!!!!
-
+	// Really ugly scripting!!!!
 	var points = 0;
 	var timer = 60;
+	var ballId = 0;
 
-	var spawnBalls = function() {
-		var ballType = parseInt(Math.ceil(Math.random(0,5)*5));
-
-		$('body').append($('<div class="ball" style="left:'+Math.ceil(Math.random(0,10)*100)+'%; top:'+parseInt(Math.ceil(Math.random(0,10)*90)+10)+'%" data-point="'+ballType+'"></div>'));
-	}
 	var addBallClick = function() {
-		$('div.ball').on('click', function() {
+		$('div#ball-'+ballId).on('click', function() {
 			if(timer !== 0) {
 				var ballPoint = parseInt($(this).attr('data-point'));
-				console.log(ballPoint);
 				points += ballPoint;
 				$('span.points').html(points);
+
+				// Play sound
+				document.getElementById('ball-click').play();
 
 				$(this).remove();
 			}
 		});
 	}
 
+	var spawnBalls = function() {
+		var ballType = parseInt(Math.ceil(Math.random(0,5)*6));
+		ballId++;
+
+		if(ballType === 6) {
+			ballType = -5;
+			$('body').append($('<div class="ball" id="ball-'+ballId+'" style="left:'+Math.ceil(Math.random(0,10)*95)+'%; top:'+parseInt(Math.ceil(Math.random(0,10)*85)+10)+'%" data-point="'+ballType+'">!</div>'));
+		} else {
+			$('body').append($('<div class="ball" id="ball-'+ballId+'" style="left:'+Math.ceil(Math.random(0,10)*95)+'%; top:'+parseInt(Math.ceil(Math.random(0,10)*85)+10)+'%" data-point="'+ballType+'"></div>'));
+		}
+
+		addBallClick();
+	}
+
 	setInterval(function() {
 		if(timer !== 0) {
 			spawnBalls();
-			addBallClick();
 		}
 	}, Math.ceil(Math.random(500,1000)*1000));
 
