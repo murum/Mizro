@@ -1,0 +1,75 @@
+div.overlay {
+	width: 90%;
+	height: 90%;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	background: rgba(0,0,0,.75);
+	display: none;
+
+	z-index: 3;
+
+	color: #fff;
+	text-align: center;
+	padding: 5%;
+}
+
+div.overlay span.points {
+	display: block;
+}
+
+div.overlay span.points:before {
+	content: 'Du fick ihop: ';
+}
+div.overlay span.points:after {
+	content: 'poäng';
+}
+.ball {
+	z-index: 2;
+	background: #000;
+	border-radius: 50%;
+
+	height: 50px;
+	width: 50px;
+
+	display: block;
+	position: absolute;
+
+	box-shadow: 
+		0 0 25px rgba(0,0,0,.5),
+		inset 0 0 25px #fff
+		;
+}
+
+.ball[data-point="1"] {
+	background: red;
+}
+
+.ball[data-point="2"] {
+	background: green;
+}
+
+.ball[data-point="3"] {
+	background: orange;
+}
+
+.ball[data-point="4"] {
+	background: blue;
+}
+
+.ball[data-point="5"] {
+	background: brown;
+}
+
+div.points {
+	font-weight: bold;
+	float: left;
+}
+div.points:before {
+	content: 'Dina poäng: ';
+}
+
+div.timer {
+	float: right;
+}
