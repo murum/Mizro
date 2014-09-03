@@ -44,6 +44,16 @@ div.overlay span.points:after {
 	text-align: center;
 	font-size: 1.75em;
 	font-weight: bold;
+
+    -webkit-animation: spin 3s linear infinite;
+
+    opacity: 0.9;
+
+    cursor: pointer;
+}
+
+.ball:hover {
+	opacity: 1;
 }
 
 .ball[data-point="1"] {
@@ -106,4 +116,20 @@ div.points:before {
 div.timer {
 	float: right;
 	font-size: 2em;
+}
+
+
+
+
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
